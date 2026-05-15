@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quizify</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon"></div>
+            <span>Quizify</span>
+        </div>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" onclick="showSection('setup')">New Quiz</button>
+            <button class="nav-item" onclick="showSection('history')">History</button>
+        </nav>
+        <div class="sidebar-footer">
+            <span id="welcome-msg"></span>
+            <button class="btn-logout" onclick="logout()">Sign Out</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Setup Section -->
+        <div id="setup-section" class="section active">
+            <div class="section-header">
+                <h2>New Quiz</h2>
+                <p>Enter any topic and let AI generate your quiz instantly.</p>
+            </div>
+            <div class="setup-card">
+                <div class="input-wrap">
+                    <label>Topic</label>
+                    <input type="text" id="topic-input" placeholder="e.g. World War II, Python, Astronomy...">
+                </div>
+                <div class="input-wrap">
+                    <label>Number of Questions</label>
+                    <div class="num-selector">
+                        <button class="num-btn active" onclick="selectNum(this, 3)">3</button>
+                        <button class="num-btn" onclick="selectNum(this, 5)">5</button>
+                        <button class="num-btn" onclick="selectNum(this, 10)">10</button>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="generateQuiz()" id="generate-btn">Generate Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="section">
+            <div class="section-header">
+                <h2 id="quiz-topic-label"></h2>
+                <p id="quiz-progress"></p>
+            </div>
+            <div id="questions-container"></div>
+            <button class="btn-primary" onclick="submitQuiz()">Submit Answers</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="section">
+            <div class="results-hero">
+                <div class="score-ring">
+                    <svg viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="#1e293b" stroke-width="10"/>
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="#6366f1" stroke-width="10"
+                                stroke-dasharray="314" stroke-dashoffset="314"
+                                stroke-linecap="round" id="score-circle" transform="rotate(-90 60 60)"/>
+                    </svg>
+                    <div class="score-text" id="score-text"></div>
+                </div>
+                <div class="results-meta">
+                    <h2>Quiz Complete</h2>
+                    <p id="score-display"></p>
+                    <button class="btn-primary" onclick="resetQuiz()">Try Another Quiz</button>
+                </div>
+            </div>
+            <div id="answers-review"></div>
+        </div>
+
+        <!-- History Section -->
+        <div id="history-section" class="section">
+            <div class="section-header">
+                <h2>Quiz History</h2>
+                <p>Your last 10 quizzes</p>
+            </div>
+            <div id="history-list"></div>
+        </div>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
