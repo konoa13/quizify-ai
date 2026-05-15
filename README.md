@@ -49,3 +49,9 @@ The app uses Node.js, Express, SQLite, and the Groq AI API.
 1. Install dependencies:
 ```bash
 npm install
+
+## Deployment
+
+This app is deployed on Render:
+
+ Live App: https://quizify-ai-u7ug.onrender.com
